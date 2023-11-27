@@ -4,7 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 
 # Line Notify 的 Access Token
-LINE_NOTIFY_ACCESS_TOKEN = 'S6prDMx4jetGxvYrBe4fsBoSz2HVYuQCPUHLwOsKXIr'
+LINE_NOTIFY_ACCESS_TOKEN = 'OkGlJHRYoq67GrH6gQRsXNxEVSxSXmZD1vfVKJYioqY'
 
 # 目标网页的URL
 #tkttube url = 'https://tktube.com/latest-updates/'
@@ -59,7 +59,9 @@ def crawl_and_notify():
         else:
             print('Not find list_videos_container')
 # 每隔 5 分钟执行一次任务
-schedule.every(5).minutes.do(crawl_and_notify)
+#schedule.every(5).minutes.do(crawl_and_notify)
+# 中午12點執行
+schedule.every().day.at("12:00").do(crawl_and_notify)
 
 # 无限循环，保持脚本运行
 while True:
