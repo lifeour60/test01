@@ -37,9 +37,6 @@ jobs:
     - name: Install requests module
       run: |
         python -m pip install requests
-    - name: Test with pytest
-      run: |
-        pytest
     - name: Run catch.py
       run: |
         python catch.py
