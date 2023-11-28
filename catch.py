@@ -41,15 +41,13 @@ if response.status_code == 200:
             link = video_item.find('div', class_='detail').find('a')['href']
 
             full_href = f"https://njav.tv/zh/{link}"
-
-
                     # 将标题和链接添加到列表
             titles_and_links.append((title, full_href))
 
                 # 将标题和链接发送到 Line Notify
-            for title, link in titles_and_links:
-                message = f"Title: {title}\n網址: {link}"
-                send_line_notify(LINE_NOTIFY_ACCESS_TOKEN, message)
+        for title, link in titles_and_links:
+            message = f"Title: {title}\n網址: {link}"
+            send_line_notify(LINE_NOTIFY_ACCESS_TOKEN, message)
 
             # line字數限制
             # messages = "\n".join([f"Title: {title}\n網址: {link}" for title, link in titles_and_links])
