@@ -60,8 +60,7 @@ def crawl_and_notify():
             print('Not find list_videos_container')
 # 每隔 5 分钟执行一次任务
 #schedule.every(5).minutes.do(crawl_and_notify)
-# 中午12點執行
-schedule.every().day.at("12:00").do(crawl_and_notify)
+schedule.every(3).hours.at(":00").do(crawl_and_notify)
 
 # 无限循环，保持脚本运行
 while True:
