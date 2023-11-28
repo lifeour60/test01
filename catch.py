@@ -3,22 +3,26 @@ import requests
 from bs4 import BeautifulSoup
 
 # Line Notify 的 Access Token
-LINE_NOTIFY_ACCESS_TOKEN = 'aTaQsteer6ZMJYEjOcO49yhapGBjLcRNVr2cbaUASey'
+LINE_NOTIFY_ACCESS_TOKEN = 'JLq2wsoLHqpAzGtFOIwek9juogf5iI8CNvhGaLokk3U'
 
 # 目标网页的URL
 #tkttube url = 'https://tktube.com/latest-updates/'
 # njav new url = 'https://njav.tv/zh/recent-update?page=1'
-url = 'https://njav.tv/zh/tags/fc2'
+url = 'https://njav.tv/zh/new-release'
 
     # 发送HTTP请求并获取网页内容
 response = requests.get(url)
 
     # Line Notify 的发送函数
-def send_line_notify(token, message):
+def send_line_notify(token, message, image_url=None):
     line_notify_api = 'https://notify-api.line.me/api/notify'
     headers = {'Authorization': f'Bearer {token}'}
     data = {'message': message}
     requests.post(line_notify_api, headers=headers, data=data)
+
+    if image_url:
+       data['imageThumbnail'] = image_url
+       data['imageFullsize'] = image_url
       
     # 检查请求是否成功
 if response.status_code == 200:
@@ -42,6 +46,11 @@ if response.status_code == 200:
 
             full_href = f"https://njav.tv/zh/{link}"
                     # 将标题和链接添加到列表
+
+                    #Picture
+            #img_element = video_item.find('img', class_='lazyloaded')
+            #img_src = img_element.get('src') if img_element else None
+
             titles_and_links.append((title, full_href))
 
                 # 将标题和链接发送到 Line Notify
