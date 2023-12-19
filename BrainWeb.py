@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import base64
 
 # Line Notify 的 Access Token
-LINE_NOTIFY_ACCESS_TOKEN = 'JzU3ipk8ymm0frQ3EsCEHA9vwDYdew5Q8oe2yNLLFa8'
+LINE_NOTIFY_ACCESS_TOKEN = 'tlRAlGhb19ETBP318gv4W6BgioOp786EtaVZpqjRDLT'
 
 # 目标网页的URL
 
